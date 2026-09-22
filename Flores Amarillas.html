@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día - Flores Amarillas</title>
+    <!-- Tailwind CSS for modern layout utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            background: radial-gradient(circle at bottom, #0f172a 0%, #090d16 100%);
+            margin: 0;
+            height: 100vh;
+        }
+
+        .romantic-font {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Star twinkle animation */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        /* Firefly glowing and floating animation */
+        @keyframes float-firefly {
+            0% { transform: translate(0, 0) scale(0.8); opacity: 0; }
+            20% { opacity: 0.8; }
+            50% { transform: translate(var(--dx), var(--dy)) scale(1.2); opacity: 1; }
+            80% { opacity: 0.6; }
+            100% { transform: translate(calc(var(--dx) * 1.5), calc(var(--dy) * 1.5)) scale(0.5); opacity: 0; }
+        }
+
+        .firefly {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fef08a;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #facc15, 0 0 20px #fde047;
+            animation: float-firefly var(--duration) infinite ease-in-out var(--delay);
+            pointer-events: none;
+        }
+
+        /* Wind sway animation for flowers */
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(6deg); }
+        }
+
+        .swaying-flower {
+            transform-origin: bottom center;
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        /* Soft glowing animation for the central text box */
+        @keyframes soft-glow {
+            0%, 100% { box-shadow: 0 0 25px rgba(234, 179, 8, 0.2); }
+            50% { box-shadow: 0 0 45px rgba(250, 204, 21, 0.4); }
+        }
+
+        .glow-box {
+            animation: soft-glow 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="relative flex flex-col justify-between items-center h-screen w-screen selection:bg-yellow-300 selection:text-slate-900">
+
+    <!-- Starry Background -->
+    <div id="stars-container" class="absolute inset-0 pointer-events-none z-0"></div>
+
+    <!-- Fireflies Layer -->
+    <div id="fireflies-container" class="absolute inset-0 pointer-events-none z-10"></div>
+
+    <!-- Central Message Container -->
+    <main class="relative z-20 mt-16 md:mt-24 px-6 text-center max-w-2xl mx-auto flex flex-col items-center">
+        <div class="glow-box bg-slate-900/60 backdrop-blur-md border border-yellow-500/30 p-8 md:p-12 rounded-3xl transition-all duration-500 hover:border-yellow-400/60">
+            <div class="text-yellow-400 text-5xl md:text-6xl mb-4 animate-bounce">🌻</div>
+            <h1 class="romantic-font text-5xl md:text-7xl text-yellow-200 mb-6 tracking-wide drop-shadow-[0_2px_10px_rgba(250,204,21,0.5)]">
+                ¡Feliz Día!
+            </h1>
+            <p class="text-slate-200 text-lg md:text-2xl font-light tracking-wide leading-relaxed">
+                Aquí tienes unas flores amarillas llenas de luz, magia y mucho cariño para alegrar tu día.
+            </p>
+        </div>
+    </main>
+
+    <!-- Bottom Landscape: Grass and Swaying Yellow Flowers -->
+    <footer class="relative z-20 w-full h-48 md:h-64 pointer-events-none overflow-hidden">
+        <!-- Grass Hill Background Silhouette -->
+        <div class="absolute bottom-0 w-full h-24 md:h-36 bg-gradient-to-t from-emerald-950 to-emerald-900 rounded-t-[100%] scale-x-125"></div>
+        <div class="absolute bottom-0 w-full h-16 md:h-24 bg-gradient-to-t from-emerald-900 to-emerald-800 rounded-t-[100%] scale-x-110 translate-y-4"></div>
+
+        <!-- SVG Yellow Flowers Group -->
+        <div class="absolute bottom-2 w-full flex justify-around items-end px-4 md:px-12 pb-2">
+            
+            <!-- Flower Cluster 1 -->
+            <div class="swaying-flower" style="animation-delay: 0s;">
+                <svg class="w-12 h-24 md:w-16 md:h-32 drop-shadow-md" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Stem -->
+                    <path d="M50 200 C50 150, 45 100, 50 60" stroke="#15803d" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M50 120 C35 110, 25 120, 20 130" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M50 90 C65 80, 75 90, 80 100" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Flower Head -->
+                    <g transform="translate(50, 50)">
+                        <circle cx="0" cy="0" r="10" fill="#ca8a04"/>
+                        <circle cx="0" cy="-18" r="10" fill="#facc15"/>
+                        <circle cx="0" cy="18" r="10" fill="#facc15"/>
+                        <circle cx="-18" cy="0" r="10" fill="#facc15"/>
+                        <circle cx="18" cy="0" r="10" fill="#facc15"/>
+                        <circle cx="-13" cy="-13" r="10" fill="#fef08a"/>
+                        <circle cx="13" cy="-13" r="10" fill="#fef08a"/>
+                        <circle cx="-13" cy="13" r="10" fill="#fef08a"/>
+                        <circle cx="13" cy="13" r="10" fill="#fef08a"/>
+                        <circle cx="0" cy="0" r="7" fill="#854d0e"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Flower Cluster 2 -->
+            <div class="swaying-flower hidden sm:block" style="animation-delay: 1.2s; transform-origin: bottom center;">
+                <svg class="w-10 h-20 md:w-14 md:h-28 drop-shadow-md" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 200 C50 140, 55 100, 45 50" stroke="#15803d" stroke-width="4" stroke-linecap="round"/>
+                    <g transform="translate(45, 45)">
+                        <circle cx="0" cy="0" r="9" fill="#ca8a04"/>
+                        <circle cx="0" cy="-16" r="9" fill="#fde047"/>
+                        <circle cx="0" cy="16" r="9" fill="#fde047"/>
+                        <circle cx="-16" cy="0" r="9" fill="#fde047"/>
+                        <circle cx="16" cy="0" r="9" fill="#fde047"/>
+                        <circle cx="0" cy="0" r="6" fill="#713f12"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Flower Cluster 3 -->
+            <div class="swaying-flower" style="animation-delay: 0.5s;">
+                <svg class="w-14 h-28 md:w-20 md:h-36 drop-shadow-md" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 200 C45 140, 55 90, 50 40" stroke="#16a34a" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M48 140 C30 130, 20 140, 15 150" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+                    <g transform="translate(50, 35)">
+                        <circle cx="0" cy="0" r="12" fill="#ca8a04"/>
+                        <circle cx="0" cy="-22" r="12" fill="#facc15"/>
+                        <circle cx="0" cy="22" r="12" fill="#facc15"/>
+                        <circle cx="-22" cy="0" r="12" fill="#facc15"/>
+                        <circle cx="22" cy="0" r="12" fill="#facc15"/>
+                        <circle cx="-15" cy="-15" r="11" fill="#fef08a"/>
+                        <circle cx="15" cy="-15" r="11" fill="#fef08a"/>
+                        <circle cx="-15" cy="15" r="11" fill="#fef08a"/>
+                        <circle cx="15" cy="15" r="11" fill="#fef08a"/>
+                        <circle cx="0" cy="0" r="8" fill="#713f12"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Flower Cluster 4 -->
+            <div class="swaying-flower hidden md:block" style="animation-delay: 1.8s;">
+                <svg class="w-12 h-24 md:w-16 md:h-30 drop-shadow-md" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 200 C50 150, 40 100, 55 50" stroke="#15803d" stroke-width="4" stroke-linecap="round"/>
+                    <g transform="translate(55, 45)">
+                        <circle cx="0" cy="0" r="10" fill="#ca8a04"/>
+                        <circle cx="0" cy="-18" r="10" fill="#fde047"/>
+                        <circle cx="0" cy="18" r="10" fill="#fde047"/>
+                        <circle cx="-18" cy="0" r="10" fill="#fde047"/>
+                        <circle cx="18" cy="0" r="10" fill="#fde047"/>
+                        <circle cx="0" cy="0" r="7" fill="#854d0e"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Flower Cluster 5 -->
+            <div class="swaying-flower" style="animation-delay: 0.8s;">
+                <svg class="w-12 h-26 md:w-18 md:h-34 drop-shadow-md" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 200 C55 140, 45 90, 50 45" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M48 100 C65 90, 75 100, 80 110" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+                    <g transform="translate(50, 40)">
+                        <circle cx="0" cy="0" r="11" fill="#ca8a04"/>
+                        <circle cx="0" cy="-20" r="11" fill="#facc15"/>
+                        <circle cx="0" cy="20" r="11" fill="#facc15"/>
+                        <circle cx="-20" cy="0" r="11" fill="#facc15"/>
+                        <circle cx="20" cy="0" r="11" fill="#facc15"/>
+                        <circle cx="0" cy="0" r="7" fill="#713f12"/>
+                    </g>
+                </svg>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Generate random twinkling stars
+        const starsContainer = document.getElementById('stars-container');
+        const starCount = 80;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.top = `${Math.random() * 85}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 3 + 2;
+            star.style.setProperty('--duration', `${duration}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
+        // Generate dynamic wandering fireflies
+        const firefliesContainer = document.getElementById('fireflies-container');
+        const fireflyCount = 25;
+
+        for (let i = 0; i < fireflyCount; i++) {
+            const firefly = document.createElement('div');
+            firefly.classList.add('firefly');
+            
+            firefly.style.top = `${Math.random() * 80 + 10}%`;
+            firefly.style.left = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 6 + 4;
+            const delay = Math.random() * 5;
+            const dx = (Math.random() - 0.5) * 150;
+            const dy = (Math.random() - 0.5) * 120;
+            
+            firefly.style.setProperty('--duration', `${duration}s`);
+            firefly.style.setProperty('--delay', `${delay}s`);
+            firefly.style.setProperty('--dx', `${dx}px`);
+            firefly.style.setProperty('--dy', `${dy}px`);
+            
+            firefliesContainer.appendChild(firefly);
+        }
+    </script>
+</body>
+</html>
